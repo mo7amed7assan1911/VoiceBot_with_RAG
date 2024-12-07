@@ -1,0 +1,8 @@
+{
+    "serverIp": "localhost",
+    "port": 5000,
+	"pollingTimeout": 30.0,
+	"pollInterval": 0.5,
+	"audioPitch": 1
+	"audioVolume": 1
+}

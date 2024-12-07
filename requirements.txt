@@ -5,3 +5,10 @@ sentence-transformers==3.2.1
 faiss-cpu==1.9.0
 langchain-groq==0.2.1
 pyglet==2.0.18
+flask==3.0.2
+flask-cors==4.0.0
+numpy==1.26.4
+sounddevice==0.4.6
+pyinstaller~=6.11.0
+scipy==1.14.1
+noisereduce==3.0.3
