@@ -10,7 +10,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import ctypes
 import socket
-from AI import RAGVoiceBot
+from AI import RAGVoiceBot_v2
 from pydub import AudioSegment
 from scipy.signal import butter, filtfilt
 import noisereduce as nr
@@ -23,7 +23,7 @@ class AudioProcessor:
     def __init__(self):
         
         
-        self.voice_bot = RAGVoiceBot(
+        self.voice_bot = RAGVoiceBot_v2(
             knowldge_path='D:\GitHub projects\Mic_Server_Test\Backend\knowledge_base',
             groq_token_path='D:\GitHub projects\Mic_Server_Test\Backend\groq_token.txt',
             vector_db_path='vector_db'
@@ -91,7 +91,7 @@ class AudioProcessor:
             # audio_bytes = io.BytesIO()
             # tts_output.write_to_fp(audio_bytes)
             # audio_bytes.seek(0)
-            with open('D:\GitHub projects\Mic_Server_Test\Backend\output_voices\speech.mp3', 'rb') as file:
+            with open("output_voices\speech.mp3", 'rb') as file:
                 audio_bytes = file.read()
             
             # AudioSegment.ffprobe = "C:/Users/zmlka/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1-essentials_build/bin/ffprobe.exe"

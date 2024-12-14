@@ -1499,3 +1499,85 @@ Converted audio data directly to WAV format for transcription.
 2024-11-12 13:37:35,973 - INFO - ==================================================
 2024-11-12 14:59:12,137 - INFO - 
 Converted audio data directly to WAV format for transcription.
+2024-12-07 10:57:41,524 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 10:57:41,536 - INFO - ==================================================
+2024-12-07 10:57:41,537 - INFO - Audio Server Starting
+2024-12-07 10:57:41,537 - INFO - ==================================================
+2024-12-07 10:57:41,537 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 10:57:41,538 - INFO - Press Ctrl+C to stop the server
+2024-12-07 10:57:41,538 - INFO - ==================================================
+2024-12-07 10:58:06,645 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 10:58:06,647 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-07 10:59:00,083 - INFO - Server shutting down...
+2024-12-07 10:59:21,342 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 10:59:21,342 - INFO - ==================================================
+2024-12-07 10:59:21,342 - INFO - Audio Server Starting
+2024-12-07 10:59:21,342 - INFO - ==================================================
+2024-12-07 10:59:21,342 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 10:59:21,342 - INFO - Press Ctrl+C to stop the server
+2024-12-07 10:59:21,342 - INFO - ==================================================
+2024-12-07 10:59:40,240 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:01:28,952 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:03:56,551 - INFO - Server shutting down...
+2024-12-07 11:04:19,710 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 11:04:19,711 - INFO - ==================================================
+2024-12-07 11:04:19,712 - INFO - Audio Server Starting
+2024-12-07 11:04:19,712 - INFO - ==================================================
+2024-12-07 11:04:19,713 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 11:04:19,713 - INFO - Press Ctrl+C to stop the server
+2024-12-07 11:04:19,714 - INFO - ==================================================
+2024-12-07 11:04:27,214 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:06:37,523 - INFO - Server shutting down...
+2024-12-07 11:06:55,048 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 11:06:55,051 - INFO - ==================================================
+2024-12-07 11:06:55,052 - INFO - Audio Server Starting
+2024-12-07 11:06:55,053 - INFO - ==================================================
+2024-12-07 11:06:55,053 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 11:06:55,054 - INFO - Press Ctrl+C to stop the server
+2024-12-07 11:06:55,055 - INFO - ==================================================
+2024-12-07 11:07:11,109 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:07:21,201 - ERROR - Error in processing thread: [Errno 2] No such file or directory: '\\output_voices\\speech.mp3'
+2024-12-07 11:08:14,495 - INFO - Server shutting down...
+2024-12-07 11:08:37,582 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 11:08:37,586 - INFO - ==================================================
+2024-12-07 11:08:37,587 - INFO - Audio Server Starting
+2024-12-07 11:08:37,588 - INFO - ==================================================
+2024-12-07 11:08:37,588 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 11:08:37,588 - INFO - Press Ctrl+C to stop the server
+2024-12-07 11:08:37,589 - INFO - ==================================================
+2024-12-07 11:08:49,677 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:09:00,668 - ERROR - Error in processing thread: [Errno 2] No such file or directory: '\\output_voices\\speech.mp3'
+2024-12-07 11:10:45,440 - INFO - Server shutting down...
+2024-12-07 11:11:10,813 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-07 11:11:10,814 - INFO - ==================================================
+2024-12-07 11:11:10,814 - INFO - Audio Server Starting
+2024-12-07 11:11:10,815 - INFO - ==================================================
+2024-12-07 11:11:10,816 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-07 11:11:10,817 - INFO - Press Ctrl+C to stop the server
+2024-12-07 11:11:10,819 - INFO - ==================================================
+2024-12-07 11:11:55,486 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:12:26,561 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:12:50,948 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:13:05,338 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-07 11:13:50,802 - INFO - Server shutting down...
+2024-12-14 09:57:47,195 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 09:57:47,210 - INFO - ==================================================
+2024-12-14 09:57:47,210 - INFO - Audio Server Starting
+2024-12-14 09:57:47,210 - INFO - ==================================================
+2024-12-14 09:57:47,210 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 09:57:47,210 - INFO - Press Ctrl+C to stop the server
+2024-12-14 09:57:47,210 - INFO - ==================================================
+2024-12-14 09:58:00,972 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 09:58:35,192 - INFO - 
+Converted audio data directly to WAV format for transcription.
