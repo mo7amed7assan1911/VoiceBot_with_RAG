@@ -1,4 +1,6 @@
 from text_to_text_with_RAG import text_to_text_with_RAG
+from Speach_to_text_Providers.stt_manager import SpeechToTextManager
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -7,21 +9,30 @@ from config.settings import (
     KNOWLEDGE_BASE_PATH,
     METADATA_PATH,
     EMBEDDING_MODEL_NAME,
-    LLM_PROVIDER_NAME,
-    MODEL_NAME,
+    TTT_PROVIDER_NAME,
+    TTT_MODEL_NAME,
+    STT_MODEL_NAME,
+    STT_PROVIDER_NAME,
     DEFAULT_MAX_TOKENS,
-    DEFAULT_TEMPERATURE
+    DEFAULT_TEMPERATURE,
+    
 )
 
 
 def main():
+
+    stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+    transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
+    
+    print(f"Transcript: {transcript}")
+    
     rag = text_to_text_with_RAG(
         vector_db_path=VECTOR_DB_PATH,
         knowledge_base_path=KNOWLEDGE_BASE_PATH,
         metadata_path=METADATA_PATH,
         embedding_model_name=EMBEDDING_MODEL_NAME,
-        llm_provider=LLM_PROVIDER_NAME,
-        model_name=MODEL_NAME,
+        llm_provider=TTT_PROVIDER_NAME,
+        model_name=TTT_MODEL_NAME,
         max_tokens=DEFAULT_MAX_TOKENS,
         temperature=DEFAULT_TEMPERATURE
     )
