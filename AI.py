@@ -223,7 +223,7 @@ class RAGVoiceBot_v2:
         return RetrievalQA.from_chain_type(
             llm=self.llm,
             chain_type='stuff',
-            retriever=vec_db.as_retriever(search_kwargs={'k': 5}),
+            retriever=vec_db.as_retriever(search_kwargs={'k': k}),
             # return_source_documents=True
         )
 
@@ -356,11 +356,19 @@ class RAGVoiceBot_v2:
         audio = self.elevenlabs_client.generate(
             text=text,
             voice="IK7YYZcSpmlkjKrQxbSn",
-            model="eleven_multilingual_v2"
+            model="eleven_multilingual_v2",
+            stream=True
         )
         
-        save(audio, "output_voices\speech.mp3")
-        return audio
+        start = time.time()
+        audio_data = bytearray()
+        for chunk in audio:
+            audio_data.extend(chunk)
+        print(f"time of conversion to bytes: {time.time() - start}")
+
+        return bytes(audio_data)
+        # save(audio, "output_voices\speech.mp3")
+        # return audio
         # play(audio)
         
     def process_audio_file(self, audio_path):
@@ -394,7 +402,10 @@ class RAGVoiceBot_v2:
         print(f'Model response time: {time.time() - start}')
         print('='*50)
         
+        start = time.time()
         tts_output = self.text_to_sound(response)
+        print(f"time of TTS: {time.time() - start}")
+
         return transcription, response, tts_output
 
 if __name__ == '__main__':

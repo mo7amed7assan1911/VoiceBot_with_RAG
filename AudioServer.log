@@ -1581,3 +1581,219 @@ Converted audio data directly to WAV format for transcription.
 Converted audio data directly to WAV format for transcription.
 2024-12-14 09:58:35,192 - INFO - 
 Converted audio data directly to WAV format for transcription.
+2024-12-14 10:01:03,530 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:07:07,350 - INFO - Server shutting down...
+2024-12-14 10:07:26,889 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:07:26,890 - INFO - ==================================================
+2024-12-14 10:07:26,890 - INFO - Audio Server Starting
+2024-12-14 10:07:26,890 - INFO - ==================================================
+2024-12-14 10:07:26,892 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:07:26,893 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:07:26,893 - INFO - ==================================================
+2024-12-14 10:07:31,608 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:07:40,883 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:08:36,961 - INFO - Server shutting down...
+2024-12-14 10:08:54,415 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:08:54,417 - INFO - ==================================================
+2024-12-14 10:08:54,417 - INFO - Audio Server Starting
+2024-12-14 10:08:54,419 - INFO - ==================================================
+2024-12-14 10:08:54,419 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:08:54,420 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:08:54,420 - INFO - ==================================================
+2024-12-14 10:09:13,601 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:09:57,157 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:10:13,425 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:14:40,561 - INFO - Server shutting down...
+2024-12-14 10:14:58,843 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:14:58,844 - INFO - ==================================================
+2024-12-14 10:14:58,844 - INFO - Audio Server Starting
+2024-12-14 10:14:58,845 - INFO - ==================================================
+2024-12-14 10:14:58,846 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:14:58,847 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:14:58,847 - INFO - ==================================================
+2024-12-14 10:15:07,179 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:15:19,092 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:18:41,922 - INFO - Server shutting down...
+2024-12-14 10:19:00,687 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:19:00,690 - INFO - ==================================================
+2024-12-14 10:19:00,692 - INFO - Audio Server Starting
+2024-12-14 10:19:00,692 - INFO - ==================================================
+2024-12-14 10:19:00,693 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:19:00,695 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:19:00,696 - INFO - ==================================================
+2024-12-14 10:19:15,265 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:19:26,690 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:20:11,137 - INFO - Server shutting down...
+2024-12-14 10:20:28,915 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:20:28,915 - INFO - ==================================================
+2024-12-14 10:20:28,915 - INFO - Audio Server Starting
+2024-12-14 10:20:28,919 - INFO - ==================================================
+2024-12-14 10:20:28,920 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:20:28,921 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:20:28,922 - INFO - ==================================================
+2024-12-14 10:20:42,960 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:20:55,940 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:22:08,287 - INFO - Server shutting down...
+2024-12-14 10:22:23,523 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:22:23,524 - INFO - ==================================================
+2024-12-14 10:22:23,526 - INFO - Audio Server Starting
+2024-12-14 10:22:23,526 - INFO - ==================================================
+2024-12-14 10:22:23,526 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:22:23,527 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:22:23,527 - INFO - ==================================================
+2024-12-14 10:22:43,056 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:22:53,166 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:23:52,673 - INFO - Server shutting down...
+2024-12-14 10:24:10,912 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:24:10,918 - INFO - ==================================================
+2024-12-14 10:24:10,919 - INFO - Audio Server Starting
+2024-12-14 10:24:10,919 - INFO - ==================================================
+2024-12-14 10:24:10,920 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:24:10,920 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:24:10,921 - INFO - ==================================================
+2024-12-14 10:24:18,993 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:24:28,472 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:29:38,720 - INFO - Server shutting down...
+2024-12-14 10:30:33,055 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:30:33,057 - INFO - ==================================================
+2024-12-14 10:30:33,058 - INFO - Audio Server Starting
+2024-12-14 10:30:33,058 - INFO - ==================================================
+2024-12-14 10:30:33,059 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:30:33,059 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:30:33,060 - INFO - ==================================================
+2024-12-14 10:31:31,396 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:31:41,664 - ERROR - Error in processing thread: expected str, bytes or os.PathLike object, not BytesIO
+2024-12-14 10:34:13,688 - INFO - Server shutting down...
+2024-12-14 10:34:36,803 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:34:36,806 - INFO - ==================================================
+2024-12-14 10:34:36,806 - INFO - Audio Server Starting
+2024-12-14 10:34:36,807 - INFO - ==================================================
+2024-12-14 10:34:36,809 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:34:36,810 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:34:36,810 - INFO - ==================================================
+2024-12-14 10:34:37,134 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:34:44,301 - ERROR - Error in processing thread: a bytes-like object is required, not 'generator'
+2024-12-14 10:41:05,650 - INFO - Server shutting down...
+2024-12-14 10:41:26,672 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:41:26,674 - INFO - ==================================================
+2024-12-14 10:41:26,675 - INFO - Audio Server Starting
+2024-12-14 10:41:26,676 - INFO - ==================================================
+2024-12-14 10:41:26,677 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:41:26,678 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:41:26,679 - INFO - ==================================================
+2024-12-14 10:41:29,636 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:43:57,430 - INFO - Server shutting down...
+2024-12-14 10:44:16,792 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:44:16,794 - INFO - ==================================================
+2024-12-14 10:44:16,795 - INFO - Audio Server Starting
+2024-12-14 10:44:16,795 - INFO - ==================================================
+2024-12-14 10:44:16,796 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:44:16,796 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:44:16,797 - INFO - ==================================================
+2024-12-14 10:44:30,273 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:45:14,686 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:45:26,561 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:46:25,044 - INFO - Server shutting down...
+2024-12-14 10:46:44,089 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:46:44,091 - INFO - ==================================================
+2024-12-14 10:46:44,092 - INFO - Audio Server Starting
+2024-12-14 10:46:44,093 - INFO - ==================================================
+2024-12-14 10:46:44,093 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:46:44,094 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:46:44,095 - INFO - ==================================================
+2024-12-14 10:47:22,032 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:50:24,883 - INFO - Server shutting down...
+2024-12-14 10:50:44,654 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:50:44,658 - INFO - ==================================================
+2024-12-14 10:50:44,659 - INFO - Audio Server Starting
+2024-12-14 10:50:44,659 - INFO - ==================================================
+2024-12-14 10:50:44,660 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:50:44,661 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:50:44,661 - INFO - ==================================================
+2024-12-14 10:50:54,758 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 10:55:42,827 - INFO - Server shutting down...
+2024-12-14 10:57:44,547 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 10:57:44,551 - INFO - ==================================================
+2024-12-14 10:57:44,552 - INFO - Audio Server Starting
+2024-12-14 10:57:44,553 - INFO - ==================================================
+2024-12-14 10:57:44,553 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 10:57:44,554 - INFO - Press Ctrl+C to stop the server
+2024-12-14 10:57:44,556 - INFO - ==================================================
+2024-12-14 10:57:45,461 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:27:43,790 - INFO - Server shutting down...
+2024-12-14 11:28:01,231 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 11:28:01,232 - INFO - ==================================================
+2024-12-14 11:28:01,233 - INFO - Audio Server Starting
+2024-12-14 11:28:01,233 - INFO - ==================================================
+2024-12-14 11:28:01,234 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 11:28:01,234 - INFO - Press Ctrl+C to stop the server
+2024-12-14 11:28:01,235 - INFO - ==================================================
+2024-12-14 11:28:13,326 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:29:46,868 - INFO - Server shutting down...
+2024-12-14 11:30:23,961 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 11:30:23,963 - INFO - ==================================================
+2024-12-14 11:30:23,964 - INFO - Audio Server Starting
+2024-12-14 11:30:23,964 - INFO - ==================================================
+2024-12-14 11:30:23,966 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 11:30:23,966 - INFO - Press Ctrl+C to stop the server
+2024-12-14 11:30:23,966 - INFO - ==================================================
+2024-12-14 11:38:16,495 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:38:26,293 - ERROR - Error in processing thread: 'generator' object has no attribute 'getvalue'
+2024-12-14 11:38:56,653 - INFO - Server shutting down...
+2024-12-14 11:39:16,709 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 11:39:16,712 - INFO - ==================================================
+2024-12-14 11:39:16,713 - INFO - Audio Server Starting
+2024-12-14 11:39:16,716 - INFO - ==================================================
+2024-12-14 11:39:16,719 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 11:39:16,720 - INFO - Press Ctrl+C to stop the server
+2024-12-14 11:39:16,721 - INFO - ==================================================
+2024-12-14 11:39:22,089 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:39:51,460 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:40:07,158 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:41:39,857 - INFO - Server shutting down...
+2024-12-14 11:42:56,026 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 11:42:56,028 - INFO - ==================================================
+2024-12-14 11:42:56,028 - INFO - Audio Server Starting
+2024-12-14 11:42:56,030 - INFO - ==================================================
+2024-12-14 11:42:56,030 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 11:42:56,031 - INFO - Press Ctrl+C to stop the server
+2024-12-14 11:42:56,032 - INFO - ==================================================
+2024-12-14 11:43:01,796 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:43:50,072 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:56:19,678 - INFO - Server shutting down...
+2024-12-14 11:56:39,139 - WARNING - Running without administrator privileges. Some features might not work.
+2024-12-14 11:56:39,140 - INFO - ==================================================
+2024-12-14 11:56:39,141 - INFO - Audio Server Starting
+2024-12-14 11:56:39,141 - INFO - ==================================================
+2024-12-14 11:56:39,142 - INFO - Server URL: http://0.0.0.0:5000
+2024-12-14 11:56:39,142 - INFO - Press Ctrl+C to stop the server
+2024-12-14 11:56:39,143 - INFO - ==================================================
+2024-12-14 11:56:52,859 - INFO - 
+Converted audio data directly to WAV format for transcription.
+2024-12-14 11:57:01,061 - ERROR - Error in processing thread: status_code: 401, body: {'detail': {'status': 'quota_exceeded', 'message': 'This request exceeds your  quota of 10000. You have 2 credits remaining, while 57 credits are required for this request.'}}

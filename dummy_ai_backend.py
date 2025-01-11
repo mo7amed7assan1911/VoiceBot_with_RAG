@@ -83,37 +83,17 @@ class AudioProcessor:
         """Simulate processing steps and store result"""
         try:
             # Simulate Speech-to-Text
-            transcription, response, tts_output = self.voice_bot.process_audio_file(samples)
+            transcription, response, audio_data = self.voice_bot.process_audio_file(samples)
             print(f'model transcription: {transcription}')
             print(f'Modle response LLM: {response}')
             print('='*50)
 
-            # audio_bytes = io.BytesIO()
-            # tts_output.write_to_fp(audio_bytes)
-            # audio_bytes.seek(0)
-            with open("output_voices\speech.mp3", 'rb') as file:
-                audio_bytes = file.read()
-            
-            # AudioSegment.ffprobe = "C:/Users/zmlka/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.1-essentials_build/bin/ffprobe.exe"
+            # with open("output_voices\speech.mp3", 'rb') as file:
+            #     audio_bytes = file.read()
+            self.processed_audio = audio_data
 
-            # audio_segment = AudioSegment.from_file(audio_bytes, format='mp3')
-            
-            # pcm_int16 = io.BytesIO()
-            # audio_segment.export(pcm_int16, format='wav')
-            # pcm_int16.seek(0)
-            
-            # with wave.open(pcm_int16, 'rb') as wav_file:
-            #     int16_samples = np.frombuffer(wav_file.readframes(wav_file.getnframes()), dtype=np.int16)
-
-            # float32_samples = int16_samples.astype(np.float32) / 32767.0
-            # float32_bytes = float32_samples.tobytes()
-            self.processed_audio = audio_bytes
-            print(type(self.processed_audio))
-            
-            # self.processed_audio = audio_bytes.read()
-            # print(type(self.processed_audio))
-            # print('finished all AI here')
-
+            # self.processed_audio = tts_output.getvalue()
+            # print(f'Processed audio size: {len(self.processed_audio)}')
         except Exception as e:
             logger.error(f"Error in processing thread: {e}")
             self.processed_audio = None
@@ -219,7 +199,6 @@ def process_audio():
 
 @app.route('/get_audio', methods=['GET'])
 def get_audio():
-    print('outer get_audio 1')
     try:
         # If still processing, return 204 No Content
         if audio_processor.is_busy():
@@ -227,10 +206,8 @@ def get_audio():
 
         # Get processed audio in int16 format (e.g., 44100 Hz, mono)
         audio_data = audio_processor.get_audio()
-        print(type(audio_data))
         if audio_data is None:
             return Response("Audio processing not complete", status=503)
-        print('outer get_audio 1')
         # # Convert int16 PCM to float32 PCM for Unity
         # int16_samples = np.frombuffer(audio_data, dtype=np.int16)
         # float32_samples = int16_samples.astype(np.float32) / 32767  # Normalize to [-1, 1] range
@@ -244,7 +221,7 @@ def get_audio():
         audio_processor.processed_audio = None
 
         return send_file(
-            mem_file,
+            io.BytesIO(audio_data),
             mimetype='application/octet-stream',
             as_attachment=True,
             download_name='response.raw'
