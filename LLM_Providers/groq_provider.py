@@ -7,7 +7,7 @@ class GroqProvider(BaseModelProvider):
         from groq import Groq
         super().__init__(model_name, max_tokens, temperature) # inhirit from the parent class
         
-        os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
+        # os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
         self.client = Groq()
     
 
