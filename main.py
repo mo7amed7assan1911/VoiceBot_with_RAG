@@ -1,6 +1,6 @@
 from text_to_text_with_RAG import text_to_text_with_RAG
-from Speach_to_text_Providers.stt_manager import SpeechToTextManager
-from Text_to_Speach_Providers.tts_manager import TextToSpeachManager
+from Speech_to_text_Providers.stt_manager import SpeechToTextManager
+from Text_to_Speech_Providers.tts_manager import TextToSpeachManager
 
 from dotenv import load_dotenv
 load_dotenv()

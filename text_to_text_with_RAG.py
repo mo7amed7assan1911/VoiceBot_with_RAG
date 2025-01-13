@@ -36,15 +36,15 @@ class text_to_text_with_RAG:
         
         # Initialize the model provider
         if llm_provider == "groq":
-            from LLM_Providers.groq_provider import GroqProvider
+            from Text_to_Text_Providers.groq_provider import GroqProvider
             self.model = GroqProvider(model_name, max_tokens, temperature)
 
         elif llm_provider == "huggingface":
-            from LLM_Providers.huggingface_provider import HuggingFaceProvider
+            from Text_to_Text_Providers.huggingface_provider import HuggingFaceProvider
             self.model =  HuggingFaceProvider(model_name, max_tokens, temperature)
             
         elif llm_provider == "openai":
-            from LLM_Providers.openai_provider import OpenAIProvider
+            from Text_to_Text_Providers.openai_provider import OpenAIProvider
             self.model = OpenAIProvider(model_name, max_tokens, temperature)
         else:
             raise ValueError(f"Unsupported provider: {llm_provider}")
