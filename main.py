@@ -1,4 +1,4 @@
-from text_to_text_with_RAG import text_to_text_with_RAG
+from Rag_System import text_to_text_with_RAG
 from Speech_to_text_Providers.stt_manager import SpeechToTextManager
 from Text_to_Speech_Providers.tts_manager import TextToSpeachManager
 
