@@ -1,7 +1,4 @@
 from vector_db_manager import VectoreDatabaseManager
-from LLM_Providers.groq_provider import GroqProvider
-from LLM_Providers.huggingface_provider import HuggingFaceProvider
-from LLM_Providers.openai_provider import OpenAIProvider
 
 class text_to_text_with_RAG:
     def __init__(self, 
@@ -39,10 +36,15 @@ class text_to_text_with_RAG:
         
         # Initialize the model provider
         if llm_provider == "groq":
+            from LLM_Providers.groq_provider import GroqProvider
             self.model = GroqProvider(model_name, max_tokens, temperature)
+
         elif llm_provider == "huggingface":
+            from LLM_Providers.huggingface_provider import HuggingFaceProvider
             self.model =  HuggingFaceProvider(model_name, max_tokens, temperature)
+            
         elif llm_provider == "openai":
+            from LLM_Providers.openai_provider import OpenAIProvider
             self.model = OpenAIProvider(model_name, max_tokens, temperature)
         else:
             raise ValueError(f"Unsupported provider: {llm_provider}")

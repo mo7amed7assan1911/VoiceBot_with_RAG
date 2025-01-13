@@ -1,5 +1,6 @@
 from text_to_text_with_RAG import text_to_text_with_RAG
 from Speach_to_text_Providers.stt_manager import SpeechToTextManager
+from Text_to_Speach_Providers.tts_manager import TextToSpeachManager
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -39,6 +40,8 @@ def main():
     print('='*50)
     
     stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+    tss_manager = TextToSpeachManager(mode='elevenlabs')
+
     transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
     
     print(f"Transcript: {transcript}")
@@ -51,13 +54,15 @@ def main():
         
         try:
             response, relevant_chunks = rag.process_user_message(user_query)
-            print("Relevant Chunks:")
-            for chunk in relevant_chunks:
-                print(f"- {chunk}")
             print(f"Response:\n{response}\n")
+            tss_manager.synthesis(response, output_path='output_voices\speech.mp3')
+
+            # print("Relevant Chunks:")
+            # for chunk in relevant_chunks:
+            #     print(f"- {chunk}")
+            
         except Exception as e:
             print(f"An error occurred: {e}\n")
-
 
 if __name__ == "__main__":
     main()

@@ -1,68 +1,122 @@
 import streamlit as st
-import pyaudio
-import wave
+import sounddevice as sd
+import numpy as np
+from scipy.io.wavfile import write
+from dotenv import load_dotenv
+from text_to_text_with_RAG import text_to_text_with_RAG
+from Speach_to_text_Providers.stt_manager import SpeechToTextManager
+from Text_to_Speach_Providers.tts_manager import TextToSpeachManager
+from config.settings import (
+    VECTOR_DB_PATH,
+    KNOWLEDGE_BASE_PATH,
+    METADATA_PATH,
+    EMBEDDING_MODEL_NAME,
+    TTT_PROVIDER_NAME,
+    TTT_MODEL_NAME,
+    STT_MODEL_NAME,
+    STT_PROVIDER_NAME,
+    DEFAULT_MAX_TOKENS,
+    DEFAULT_TEMPERATURE,
+)
 
-# Initialize session state for recording
-if 'is_recording' not in st.session_state:
-    st.session_state['is_recording'] = False
+# Load environment variables
+load_dotenv()
 
-# Function to record audio
-def record_audio(filename="output.wav", duration=5, chunk=1024, format=pyaudio.paInt16, channels=1, rate=44100):
-    audio = pyaudio.PyAudio()
+# Global Configurations
+SAMPLE_RATE = 44100  # Audio sample rate (Hz)
+DURATION = 5  # Recording duration (seconds)
+AUDIO_FILE = "recorded_audio.wav"  # Temporary audio file for processing
+OUTPUT_VOICE_PATH = "output_voices/speech.mp3"
 
-    # Open stream
-    stream = audio.open(format=format, channels=channels,
-                        rate=rate, input=True,
-                        frames_per_buffer=chunk)
+# Initialize RAG, STT, and TTS systems
+rag = text_to_text_with_RAG(
+    vector_db_path=VECTOR_DB_PATH,
+    knowledge_base_path=KNOWLEDGE_BASE_PATH,
+    metadata_path=METADATA_PATH,
+    embedding_model_name=EMBEDDING_MODEL_NAME,
+    llm_provider=TTT_PROVIDER_NAME,
+    model_name=TTT_MODEL_NAME,
+    max_tokens=DEFAULT_MAX_TOKENS,
+    temperature=DEFAULT_TEMPERATURE,
+)
+stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+tss_manager = TextToSpeachManager(mode="elevenlabs")
 
-    st.write("Recording...")
-    frames = []
+# Utility Functions
+def record_audio(duration: int, sample_rate: int) -> np.ndarray:
+    """
+    Record audio for the specified duration.
 
-    try:
-        for _ in range(0, int(rate / chunk * duration)):
-            if not st.session_state['is_recording']:
-                break
-            data = stream.read(chunk)
-            frames.append(data)
-    finally:
-        st.write("Finished recording.")
+    Args:
+        duration (int): Duration of the recording in seconds.
+        sample_rate (int): Sample rate for recording.
 
-        # Stop and close the stream
-        stream.stop_stream()
-        stream.close()
-        audio.terminate()
+    Returns:
+        np.ndarray: Recorded audio data.
+    """
+    st.info(f"Recording for {duration} seconds...")
+    audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype=np.float32)
+    sd.wait()  # Wait for the recording to finish
+    st.success("Recording completed!")
+    return audio
 
-        # Save the recording to a file
-        with wave.open(filename, 'wb') as wf:
-            wf.setnchannels(channels)
-            wf.setsampwidth(audio.get_sample_size(format))
-            wf.setframerate(rate)
-            wf.writeframes(b''.join(frames))
 
-        return filename
+def save_audio(audio: np.ndarray, filename: str, sample_rate: int) -> None:
+    """
+    Save audio data to a WAV file.
 
-# Title of the app
-st.title("Audio Recorder")
+    Args:
+        audio (np.ndarray): Recorded audio data.
+        filename (str): Path to save the audio file.
+        sample_rate (int): Sample rate of the audio.
+    """
+    write(filename, sample_rate, (audio * 32767).astype(np.int16))  # Convert float32 to int16
+    st.success(f"Audio saved to {filename}")
 
-output_file = "recorded_audio.wav"
 
-# Button to start recording
-if st.button("Start Recording"):
-    st.session_state['is_recording'] = True
-    record_audio(filename=output_file, duration=60)  # Set max duration to 60 seconds
+def process_audio(audio_file: str) -> None:
+    """
+    Process the audio file: transcribe, generate response, and synthesize speech.
 
-# Button to stop recording
-if st.button("Stop Recording"):
-    st.session_state['is_recording'] = False
+    Args:
+        audio_file (str): Path to the audio file.
+    """
+    if not audio_file:
+        st.warning("No audio file found. Please record audio first.")
+        return
 
-# Button to play the recorded audio
+    # Transcription
+    st.info("Transcribing audio...")
+    transcription = stt_manager.transcribe(audio_file)
+    st.text_area("Transcription Output", transcription, height=200)
+
+    # Generate RAG response
+    st.info("Generating response using RAG...")
+    response, relevant_chunks = rag.process_user_message(transcription)
+    st.text_area("Model Response", response, height=200)
+
+    # Text-to-Speech Synthesis
+    st.info("Synthesizing audio response...")
+    tss_manager.synthesis(response, output_path=OUTPUT_VOICE_PATH)
+    st.audio(OUTPUT_VOICE_PATH, format="audio/mp3")
+    st.success("Response synthesized and played successfully!")
+
+# Streamlit App Layout
+st.title("Streamlit Voice Assistant with RAG")
+st.markdown("Record audio, process it with RAG, and generate audio responses!")
+
+# Record Audio
+if st.button("Record Audio"):
+    audio_data = record_audio(DURATION, SAMPLE_RATE)
+    save_audio(audio_data, AUDIO_FILE, SAMPLE_RATE)
+
+# Play Recorded Audio
 if st.button("Play Audio"):
-    if output_file:
-        audio_file = open(output_file, 'rb')
-        audio_bytes = audio_file.read()
-        st.audio(audio_bytes, format='audio/wav')
+    if AUDIO_FILE:
+        st.audio(AUDIO_FILE)
     else:
-        st.error("No audio file found. Please record audio first.")
+        st.warning("No audio file found. Please record audio first.")
 
-# Provide a placeholder for future extensions
-st.info("You can extend this app to process or analyze the recorded audio.")
+# Transcribe and Process Audio
+if st.button("Transcribe and Generate Response"):
+    process_audio(AUDIO_FILE)
