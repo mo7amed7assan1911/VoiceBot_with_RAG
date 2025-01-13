@@ -20,11 +20,6 @@ from config.settings import (
 
 
 def main():
-
-    stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
-    transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
-    
-    print(f"Transcript: {transcript}")
     
     rag = text_to_text_with_RAG(
         vector_db_path=VECTOR_DB_PATH,
@@ -42,6 +37,11 @@ def main():
     print('System intialized successfully!')
     print("You can now start asking questions. Say `/bye` to exit.")
     print('='*50)
+    
+    stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+    transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
+    
+    print(f"Transcript: {transcript}")
     
     while True:
         user_query = input("User: ")
