@@ -47,3 +47,40 @@ This project demonstrates a modular and extensible **Voice Assistant System** th
    - Both audio responses and textual outputs are provided for user queries.
 
 ---
+
+## **To run the application**
+
+1. **Install Dependencies**:
+   Ensure all required libraries are installed by running:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Set Environment Variables**:
+    * Create a .env file using the .env.example file as a reference.
+    * Add required API keys and configuration details for the providers.
+
+3. **Start the application using**:
+   ```bash
+   python main.py
+   ```
+---
+
+## **Future Enhancements**
+
+This modular design opens the door for exciting improvements. Here are some key ideas where you can contribute:
+
+1. **Real-Time Capabilities**:
+   - Implement real-time transcription and response generation for interactive use cases.
+
+2. **Web-Based Interface**:
+   - Develop a user-friendly web interface using **Streamlit** or **FastAPI** for easier interaction.
+
+3. **Performance Benchmarking**:
+   - Add tools to evaluate and compare the performance of STT, RAG, and TTS providers.
+---
+### **Let’s collaborate to make this project even better!**
+- Fork this repository, implement a feature, and submit a pull request.
+- Help test or document the system to improve usability.
+
+
