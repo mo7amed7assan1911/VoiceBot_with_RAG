@@ -12,6 +12,7 @@ from config.settings import (
     EMBEDDING_MODEL_NAME,
     TTT_PROVIDER_NAME,
     TTT_MODEL_NAME,
+    REPHRASER_MODEL_NAME,
     STT_MODEL_NAME,
     STT_PROVIDER_NAME,
     DEFAULT_MAX_TOKENS,
@@ -29,6 +30,7 @@ def main():
         embedding_model_name=EMBEDDING_MODEL_NAME,
         llm_provider=TTT_PROVIDER_NAME,
         model_name=TTT_MODEL_NAME,
+        rephraser_model_name=REPHRASER_MODEL_NAME,
         max_tokens=DEFAULT_MAX_TOKENS,
         temperature=DEFAULT_TEMPERATURE
     )

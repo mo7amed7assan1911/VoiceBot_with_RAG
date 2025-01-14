@@ -13,6 +13,7 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12
 # Text-to-Text Provider Configurations
 TTT_PROVIDER_NAME = "groq"  # text to text models Options: "groq", "huggingface", "openai"
 TTT_MODEL_NAME = "llama-3.3-70b-versatile"  # Default model name for the provider
+REPHRASER_MODEL_NAME = "llama-3.3-70b-versatile"  # Default rephraser model name for the provider
 
 # Default Response Generation Settings
 DEFAULT_MAX_TOKENS = 250  # Maximum tokens for the response
