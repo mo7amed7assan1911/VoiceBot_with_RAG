@@ -39,12 +39,12 @@ def main():
     print("You can now start asking questions. Say `/bye` to exit.")
     print('='*50)
     
-    stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
-    tss_manager = TextToSpeachManager(mode='elevenlabs')
+    # stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+    # tss_manager = TextToSpeachManager(mode='elevenlabs')
 
-    transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
+    # transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
     
-    print(f"Transcript: {transcript}")
+    # print(f"Transcript: {transcript}")
     
     while True:
         user_query = input("User: ")
@@ -55,10 +55,11 @@ def main():
         try:
             response, relevant_chunks = rag.process_user_message(user_query)
             print(f"Response:\n{response}\n")
-            tss_manager.synthesis(response, output_path='output_voices/speech.mp3')
+            # tss_manager.synthesis(response, output_path='output_voices/speech.mp3')
 
             # print("Relevant Chunks:")
             # for chunk in relevant_chunks:
+            #     print('='*50)
             #     print(f"- {chunk}")
             
         except Exception as e:

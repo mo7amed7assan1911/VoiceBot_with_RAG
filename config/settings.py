@@ -24,5 +24,5 @@ STT_PROVIDER_NAME='groq'
 STT_MODEL_NAME='whisper-large-v3-turbo'
 
 
-CHUNK_SIZE=500  # Chunk size for text splitting
+CHUNK_SIZE=1000  # Chunk size for text splitting
 CHUNK_OVERLAP=100  # Chunk overlap for text splitting
