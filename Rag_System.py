@@ -50,10 +50,11 @@ class text_to_text_with_RAG:
             raise ValueError(f"Unsupported provider: {llm_provider}")
 
 
-    def _get_relevant_chunks(self, query, k=5):
-        
+    def _get_relevant_chunks(self, query, k=5, score_threshold=0.5):
         docs = self.vector_db.similarity_search(query, k=k)
-        return [doc.page_content for doc in docs]
+        relevant_chunks = [doc.page_content for doc in docs if doc.score >= score_threshold]
+        
+        return relevant_chunks
 
     def _construct_prompt(self, chunks, query):
         context = "\n".join([f"- {chunk}" for chunk in chunks])

@@ -55,7 +55,7 @@ def main():
         try:
             response, relevant_chunks = rag.process_user_message(user_query)
             print(f"Response:\n{response}\n")
-            tss_manager.synthesis(response, output_path='output_voices\speech.mp3')
+            tss_manager.synthesis(response, output_path='output_voices/speech.mp3')
 
             # print("Relevant Chunks:")
             # for chunk in relevant_chunks:
