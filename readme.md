@@ -25,10 +25,14 @@ This project demonstrates a modular and extensible **Voice Assistant System** th
      - **Text-to-Speech Manager**: Converts generated responses to audio with any provider you need.
    - Adding or removing providers for any subsystem is straightforward and requires minimal changes.
 
-3. **Dynamic Vector Database Management**:
+3. **Rephrasing and Context Filtering**:
+   - Integrates a **rephraser component** to refine the relevant chunks retrieved from the vector database.
+   - The rephraser ensures that only the most helpful context is extracted and passed to the query-answering model, improving response accuracy and relevance.
+
+4. **Dynamic Vector Database Management**:
    - **Efficient Change Detection**: The `VectorDatabaseManager` continuously monitors the knowledge base for updates (e.g., added/removed/modified files). The vector database is rebuilt **only when necessary**, optimizing performance and resource usage.
 
-4. **Extensible Providers**:
+5. **Extensible Providers**:
    - STT, RAG, and TTS managers support multiple providers with provider-specific implementations:
      - **Speech-to-Text Providers**:
        - **Fast Whisper** (Local)
@@ -42,7 +46,7 @@ This project demonstrates a modular and extensible **Voice Assistant System** th
        - **ElevenLabs**
        - **gTTS**
 
-5. **End-to-End Workflow**:
+6. **End-to-End Workflow**:
    - Audio input → Speech-to-Text → RAG Query → Text-to-Speech → Audio output.
    - Both audio responses and textual outputs are provided for user queries.
 
