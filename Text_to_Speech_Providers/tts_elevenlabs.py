@@ -20,7 +20,6 @@ class ElevenLabs_tts(TTSBase):
         model = kwargs.get('model', 'eleven_multilingual_v2')
         streaming_mode = kwargs.get('streaming_mode', False)
         
-        print(f"Streaming type is {type(streaming_mode)}")
         audio = self.model.generate(
             text=text,
             voice=voice_id,

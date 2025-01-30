@@ -71,9 +71,25 @@ if audio_bytes:
     
     if transcript:
         # st.session_state.messages.append({'role': 'User', 'content': transcript})
+        
+        # Model response and getting relevant chunks
+        response, relevant_chunks = rag.process_user_message(transcript)
+        
+        import streamlit as st
+
+        expand = st.expander(" Show Relevant information to that question", icon="📝")
+
+        with expand:
+            st.write("### Relevant Chunks:")
+            
+            for chunk in relevant_chunks:
+                st.markdown("---")  # Horizontal line for separation
+                st.write(f"🔹 {chunk}")  # Display each chunk
+
+
         with st.spinner('Responding ...'):
             try:
-                response, relevant_chunks = rag.process_user_message(transcript)
+                
                 audio_stream = tts_manager.synthesis(text=response, streaming_mode=True)
                 stream(audio_stream)
                 
