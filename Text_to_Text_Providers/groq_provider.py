@@ -23,4 +23,21 @@ class GroqProvider(BaseModelProvider):
         )
         
         return response.choices[0].message.content
+        
     
+    def get_stream(self, prompt):
+        stream = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=[
+                {"role": "system", "content": "You are a professional conference assistant fluent in Arabic and English. Respond concisely and professionally ONLY IN ARABIC"},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=self.max_tokens, # comming from the parent class
+            temperature=self.temperature, # comming from the parent class
+            stream=True
+        )
+        
+        for chunk in stream:
+            txt = chunk.choices[0].delta.content
+            if txt:
+                yield txt

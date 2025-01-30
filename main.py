@@ -2,9 +2,12 @@ from Rag_System import text_to_text_with_RAG
 from Speech_to_text_Providers.stt_manager import SpeechToTextManager
 from Text_to_Speech_Providers.tts_manager import TextToSpeachManager
 
+from elevenlabs import stream
+
 from dotenv import load_dotenv
 load_dotenv()
 
+    
 from config.settings import (
     VECTOR_DB_PATH,
     KNOWLEDGE_BASE_PATH,
@@ -22,6 +25,7 @@ from config.settings import (
 
 
 def main():
+    streaming_mode = True
     
     rag = text_to_text_with_RAG(
         vector_db_path=VECTOR_DB_PATH,
@@ -32,7 +36,8 @@ def main():
         model_name=TTT_MODEL_NAME,
         rephraser_model_name=REPHRASER_MODEL_NAME,
         max_tokens=DEFAULT_MAX_TOKENS,
-        temperature=DEFAULT_TEMPERATURE
+        temperature=DEFAULT_TEMPERATURE,
+        streaming_mode=streaming_mode
     )
     
     
@@ -41,11 +46,11 @@ def main():
     print("You can now start asking questions. Say `/bye` to exit.")
     print('='*50)
     
-    # stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
-    # tss_manager = TextToSpeachManager(mode='elevenlabs')
+    stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
+    tts_manager = TextToSpeachManager(mode='elevenlabs')
 
     # transcript = stt_manager.transcribe("./input_test_voices/audio.m4a")
-    
+    # tts_manager.synthesis(transcript)
     # print(f"Transcript: {transcript}")
     
     while True:
@@ -55,15 +60,35 @@ def main():
             break
         
         try:
-            response, relevant_chunks = rag.process_user_message(user_query)
-            print(f"Response:\n{response}\n")
+            if streaming_mode:
+                streaming, relevant_chunks = rag.process_user_message(user_query)
+                print('='*50)
+                print("Relevant Chunks:")
+                for chunk in relevant_chunks:
+                    print("-"*50)
+                    print("- ", chunk)
+                    
+                    
+                print('='*50)
+                print('Answer: ')
+                for chunk in streaming:
+                    print(chunk, end='', flush=True)
+                print()
+                print('='*50)
+                
+                # def text_stream():
+                #     yield "Hi there, I'm Eleven "
+                #     yield "I'm a text to speech API "
+                    
+                # audio_stream = tts_manager.synthesis(text=streaming, streaming_mode=True)
+                # stream(audio_stream)
+                    
+            else:
+                response, _ = rag.process_user_message(user_query)
+                print(f"\nResponse:\n{response}\n")
             # tss_manager.synthesis(response, output_path='output_voices/speech.mp3')
 
-            # print("Relevant Chunks:")
-            # for chunk in relevant_chunks:
-            #     print('='*50)
-            #     print(f"- {chunk}")
-            
+    
         except Exception as e:
             print(f"An error occurred: {e}\n")
 

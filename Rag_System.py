@@ -10,7 +10,8 @@ class text_to_text_with_RAG:
                 model_name='llama-3.3-70b-versatile',
                 rephraser_model_name='llama-3.1-8b-instant',
                 max_tokens=250,
-                temperature=0.4):
+                temperature=0.4,
+                streaming_mode=False):
         """
         Initialize the RAG application.
 
@@ -24,6 +25,7 @@ class text_to_text_with_RAG:
             max_tokens (int): Maximum tokens for the response.
             temperature (float): Sampling temperature for response generation.
         """
+        self.streaming_mode = streaming_mode
         
         # Initialize the vector database manager
         vdb_manager = VectoreDatabaseManager(
@@ -33,9 +35,11 @@ class text_to_text_with_RAG:
             embedding_model_name=embedding_model_name)
         
         self.vector_db = vdb_manager.get_vector_databaase()
-        
-        
-        # Initialize the model provider
+        self.retriver = self.vector_db.as_retriever(
+            search_type="similarity_score_threshold",
+            search_kwargs={'score_threshold': 0.8}
+        )
+                # Initialize the model provider
         if llm_provider == "groq":
             from Text_to_Text_Providers.groq_provider import GroqProvider
             self.model = GroqProvider(model_name, max_tokens, temperature)
@@ -54,38 +58,46 @@ class text_to_text_with_RAG:
             raise ValueError(f"Unsupported provider: {llm_provider}")
 
 
-    def _get_relevant_chunks_from_vdb(self, query, k=5, score_threshold=25):
-        docs_with_scores = self.vector_db.similarity_search(query, k=k)
+    def _get_relevant_chunks_from_vdb(self, query, k=5):
+
+        docs_with_scores = self.vector_db.similarity_search_with_score(query, k=k)
+        # relevance_score_fn = self.vector_db._cosine_relevance_score_fn
+        # print(docs_with_scores)
+        # print('docs with scores')
+        # for doc, score in docs_with_scores:
+        #     print('='*50)
+        #     print(f'content:, {doc.page_content}')
+        #     print()
+        #     print(f'score: {score}')
+        print('='*50)
         # relevant_chunks = [doc.page_content for doc, score in docs_with_scores if score <= score_threshold]
-        relevant_chunks = [doc.page_content for doc in docs_with_scores]
+        relevant_chunks = [doc.page_content for doc, _ in docs_with_scores]
         
         return relevant_chunks
 
     def _construct_prompt_of_rag(self, context, query):
-        # context = "\n".join([f"- {chunk}" for chunk in chunks])
+        rag_template = f"""You are an advanced AI answering user queries using provided context. Follow these rules strictly:
 
-        rag_template = f"""You are given a user query, some textual context and rules, all inside xml tags. You have to answer the query based on the context while respecting the rules.
+        <rules>
+        - If you can't find any relevant information, DIRECTLY Answer from your knowledge.
+        - Use only the relevant parts of the context to answer.
+        - If the context is unreadable or unclear, provide the best possible answer.
+        - Answer concisely and in the same language as the query.
+        </rules>
 
         <context>
         {context}
         </context>
 
-        <rules>
-        - If you don't know, just say so.
-        - If you are not sure, ask for clarification.
-        - Answer in the same language as the user query.
-        - If the context appears unreadable or of poor quality, tell the user then answer as best as you can.
-        - If the answer is not in the context but you think you know the answer, DIRECTLY answer with your own knowledge.
-        - Answer directly and without using xml tags.
-        </rules>
-
         <user_query>
         {query}
         </user_query>
+
+        Answer:
         """
 
-
         return rag_template.strip()
+
     
     def _construct_rephraser_prompt_template(self, chunks, query):
         context = "\n".join([f"- {chunk}" for chunk in chunks])
@@ -108,6 +120,12 @@ class text_to_text_with_RAG:
                 
             Relevant information: Paris is the capital city of France.
         
+        # Rules:
+        - Don't summarize the relevant paragraphs, just return them as they are.
+        - Don't answer the question, just return the relevant information.
+        - If you can't find any relevant information, respond ONLY with: 'Answer from your knowledge'.
+        
+        
         <context>
         {context}
         </context>
@@ -119,16 +137,15 @@ class text_to_text_with_RAG:
         Relevant information: 
         """
 
-        rephraser_template = f"""
-        Take each paragraph of these paragraphs\n:{context}\n
-        Just return only paragraphs that help answring this question: {query}.
+        # rephraser_template = f"""
+        # Take each paragraph of these paragraphs\n:{context}\n
+        # Just return only paragraphs that help answring this question: {query}.
         
-        # Rules:
-        - Don't summarize the relevant paragraphs, just return them as they are.
-        - Don't answer the question, just return the relevant information.
-        - If you can't find any relevant information, respond with: 'Answer from your knowledge'."""
+        # # Rules:
+        # - Don't summarize the relevant paragraphs, just return them as they are.
+        # - Don't answer the question, just return the relevant information.
+        # - If you can't find any relevant information, respond ONLY with: 'Answer from your knowledge'."""
         
-        print(f"Rephraser Template: {rephraser_template}")
         return rephraser_template.strip()
     
     def _rephraser(self, relevant_chunks, query):
@@ -138,16 +155,24 @@ class text_to_text_with_RAG:
     
     def process_user_message(self, query):
         relevant_chunks = self._get_relevant_chunks_from_vdb(query)
-        print('Relevant Chunks:')
-        for chunk in relevant_chunks:
-            print('- ', chunk)
-            print('='*50)
+        # print('Relevant Chunks:')
+        # for chunk in relevant_chunks:
+        #     print('- ', chunk)
+        #     print('='*50)
             
-        rephrased_context = self._rephraser(relevant_chunks, query)
+        # rephrased_context = self._rephraser(relevant_chunks, query)
         
-        print('Rephrased Context: ', rephrased_context)
+        # print("="*50)
+        # print('Rephrased Context: ', rephrased_context)
+        # print("="*50)
         
-        full_prompt_after_rag = self._construct_prompt_of_rag(rephrased_context, query)
-        final_response = self.model.get_response(full_prompt_after_rag)
-    
-        return final_response, relevant_chunks
+        full_prompt_after_rag = self._construct_prompt_of_rag(relevant_chunks, query)
+        
+        if self.streaming_mode:
+            stream = self.model.get_stream(full_prompt_after_rag)
+            return stream, relevant_chunks
+        
+        else:
+            final_response = self.model.get_response(full_prompt_after_rag)
+            return final_response, relevant_chunks
+        

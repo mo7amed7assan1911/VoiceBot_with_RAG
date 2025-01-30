@@ -1,5 +1,5 @@
 from .tts_elevenlabs import ElevenLabs_tts
-# from tts_gTTs import GTTS_tts
+# from .tts_gTTs import GTTS_tts
 
 class TextToSpeachManager:
     def __init__(self, mode):
@@ -12,8 +12,8 @@ class TextToSpeachManager:
         else:
             raise ValueError("Invalid mode. Supported modes: 'gtts', 'elevenlabs'")
         
-    def synthesis(self, text, output_path=None, **kwargs):
+    def synthesis(self, text, **kwargs):
         """
         Synthesize text using the selected provider.
         """
-        return self.provider.synthesis(text, output_path, **kwargs)
+        return self.provider.synthesis(text, **kwargs)

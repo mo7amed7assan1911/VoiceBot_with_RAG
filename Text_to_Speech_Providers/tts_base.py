@@ -6,5 +6,5 @@ class TTSBase(ABC):
         pass        
         
     @abstractmethod
-    def synthesis(self, text: str, output_path: str, **kwargs) -> bytes:
+    def synthesis(self, text: str, **kwargs) -> bytes:
         pass

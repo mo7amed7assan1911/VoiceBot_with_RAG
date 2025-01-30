@@ -3,13 +3,17 @@ import requests
 import time
 from io import BytesIO
 from audio_recorder_streamlit import audio_recorder
+import os
 
 from Rag_System import text_to_text_with_RAG
 from Speech_to_text_Providers.stt_manager import SpeechToTextManager
 from Text_to_Speech_Providers.tts_manager import TextToSpeachManager
 
+from elevenlabs import stream, play
+
 from dotenv import load_dotenv
 load_dotenv()
+
 
 from config.settings import (
     VECTOR_DB_PATH,
@@ -36,7 +40,8 @@ if "rag_system" not in st.session_state:
         model_name=TTT_MODEL_NAME,
         rephraser_model_name=REPHRASER_MODEL_NAME,
         max_tokens=DEFAULT_MAX_TOKENS,
-        temperature=DEFAULT_TEMPERATURE
+        temperature=DEFAULT_TEMPERATURE,
+        streaming_mode=True
     )
     st.session_state.stt_manager = SpeechToTextManager(mode=STT_PROVIDER_NAME, model_name=STT_MODEL_NAME)
     st.session_state.tts_manager = TextToSpeachManager(mode='elevenlabs')
@@ -51,11 +56,11 @@ stt_manager = st.session_state.stt_manager
 tts_manager = st.session_state.tts_manager
 
 
-st.title("🤖 Chat with RAG using Voice")
+st.title("🤖 Future Plateform Voice Assistant")
 
-for message in st.session_state.messages:
-    with st.chat_message(message['role']):
-        st.write(message['content'])
+# for message in st.session_state.messages:
+#     with st.chat_message(message['role']):
+#         st.write(message['content'])
 
 audio_bytes = audio_recorder()
 
@@ -66,22 +71,36 @@ if audio_bytes:
     
     if transcript:
         # st.session_state.messages.append({'role': 'User', 'content': transcript})
-        with st.spinner('Generating Response ...'):
+        with st.spinner('Responding ...'):
             try:
-                response, _ = rag.process_user_message(transcript)
-
+                response, relevant_chunks = rag.process_user_message(transcript)
+                audio_stream = tts_manager.synthesis(text=response, streaming_mode=True)
+                stream(audio_stream)
+                
+                # print('='*50)
+                # print("Relevant Chunks:")
+                # for chunk in relevant_chunks:
+                #     print('='*50)
+                #     print(f"- {chunk}")
+                # print('='*50)
+                # stream(
+                #     tts_manager.synthesis(
+                #         text=rag.process_user_message(transcript, stream=True)[0]
+                #     )
+                # )
+                
             except Exception as e:
                 st.error(f"An error occurred: {e}")
 
-        with st.chat_message('assistant'):
-                    st.write(response)
-                    
-        with st.spinner('Generating audio ...'):
-            try:
-                tts_audio = tts_manager.synthesis(response)
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+        # with st.chat_message('assistant'):
+        #     message_placeholder = st.empty()
+        #     full_response = ""
             
+        #     for chunk in response:
+        #         full_response += chunk
+        #         message_placeholder.write(full_response)
+        #     st.write(response)
+
         # st.audio(tts_audio, format='audio/mp3')
 
 
