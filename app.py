@@ -1,16 +1,12 @@
 import streamlit as st
-import requests
 import time
-from io import BytesIO
 from audio_recorder_streamlit import audio_recorder
-import os
 
 from Rag_System import text_to_text_with_RAG
 from Speech_to_text_Providers.stt_manager import SpeechToTextManager
 from Text_to_Speech_Providers.tts_manager import TextToSpeachManager
 
-from elevenlabs import stream, play
-
+from elevenlabs import stream
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -64,6 +60,7 @@ st.title("🤖 Future Platform Voice Assistant")
 audio_bytes = audio_recorder()
 
 if audio_bytes:
+    start = time.time()
     with st.spinner('Transcribing your audio...'):
         transcript = stt_manager.transcribe(audio_bytes)
         st.success(f"Transcript: {transcript}")
@@ -90,7 +87,10 @@ if audio_bytes:
                 
                 audio_stream = tts_manager.synthesis(text=response, 
                                                     voice_id='HMIDA') # Raed
+                
+                print(f'🕒 Elapsed time: {time.time() - start:.2f} seconds')
                 stream(audio_stream)
+                
                 
                 # print('='*50)
                 # print("Relevant Chunks:")
