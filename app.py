@@ -14,7 +14,6 @@ from elevenlabs import stream, play
 from dotenv import load_dotenv
 load_dotenv()
 
-
 from config.settings import (
     VECTOR_DB_PATH,
     KNOWLEDGE_BASE_PATH,
@@ -56,7 +55,7 @@ stt_manager = st.session_state.stt_manager
 tts_manager = st.session_state.tts_manager
 
 
-st.title("🤖 Future Plateform Voice Assistant")
+st.title("🤖 Future Platform Voice Assistant")
 
 # for message in st.session_state.messages:
 #     with st.chat_message(message['role']):
@@ -86,11 +85,11 @@ if audio_bytes:
                 st.markdown("---")  # Horizontal line for separation
                 st.write(f"🔹 {chunk}")  # Display each chunk
 
-
         with st.spinner('Responding ...'):
             try:
                 
-                audio_stream = tts_manager.synthesis(text=response, streaming_mode=True)
+                audio_stream = tts_manager.synthesis(text=response, 
+                                                    voice_id='HMIDA') # Raed
                 stream(audio_stream)
                 
                 # print('='*50)
