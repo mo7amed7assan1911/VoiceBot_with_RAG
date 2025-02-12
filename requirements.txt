@@ -13,3 +13,5 @@ pyinstaller~=6.11.0
 scipy==1.14.1
 noisereduce==3.0.3
 elevenlabs==1.13.3
+streamlit==1.42.0
+audio-recorder-streamlit==0.0.10
