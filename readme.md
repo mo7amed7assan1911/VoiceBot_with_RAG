@@ -66,7 +66,7 @@ This project demonstrates a modular and extensible **Voice Assistant System** th
 
 3. **Start the application using**:
    ```bash
-   python main.py
+   streamlit run app.py
    ```
 ---
 
