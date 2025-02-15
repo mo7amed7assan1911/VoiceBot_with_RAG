@@ -16,3 +16,11 @@ elevenlabs==1.13.3
 streamlit==1.42.0
 audio-recorder-streamlit==0.0.10
 faster-whisper==1.1.1
+
+python-dotenv~=1.0.1
+websockets~=14.2
+langchain~=0.3.18
+torch~=2.6.0
+transformers~=4.48.3
+groq~=0.18.0
+pydub~=0.25.1

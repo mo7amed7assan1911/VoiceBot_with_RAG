@@ -18,12 +18,13 @@ class ElevenLabs_tts(TTSBase):
         output_path = kwargs.get('output_path', None)
         voice_id = kwargs.get('voice_id', 'IK7YYZcSpmlkjKrQxbSn')
         model = kwargs.get('model', 'eleven_turbo_v2_5')
+        streaming_mode = kwargs.get('streaming_mode', True)
         
         audio = self.model.generate(
             text=text,
             voice=voice_id,
             model=model,
-            stream=True
+            stream=streaming_mode
         )
         
         # stream(audio)
