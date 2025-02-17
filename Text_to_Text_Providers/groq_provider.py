@@ -11,11 +11,14 @@ class GroqProvider(BaseModelProvider):
         self.client = Groq()
     
 
-    def get_response(self, prompt):
+    def get_response(self, prompt,
+                system_message = "You are a professional conference assistant fluent in Arabic and English. Respond concisely and professionally ONLY IN ARABIC"
+                ):
+        
         response = self.client.chat.completions.create(
             model=self.model_name,
             messages=[
-                {"role": "system", "content": "You are a professional conference assistant fluent in Arabic and English. Respond concisely and professionally ONLY IN ARABIC"},
+                {"role": "system", "content": system_message},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=self.max_tokens, # comming from the parent class
@@ -25,11 +28,14 @@ class GroqProvider(BaseModelProvider):
         return response.choices[0].message.content
         
     
-    def get_stream(self, prompt):
+    def get_stream(self, prompt,
+                system_message = "You are a professional conference assistant fluent in Arabic and English. Respond concisely and professionally ONLY IN ARABIC"
+                ):
+        
         stream = self.client.chat.completions.create(
             model=self.model_name,
             messages=[
-                {"role": "system", "content": "You are a professional conference assistant fluent in Arabic and English. Respond concisely and professionally ONLY IN ARABIC"},
+                {"role": "system", "content": system_message},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=self.max_tokens, # comming from the parent class
