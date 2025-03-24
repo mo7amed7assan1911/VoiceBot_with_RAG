@@ -56,7 +56,7 @@ class VectoreDatabaseManager:
                 file_path = os.path.join(root, filename)
                 print('Processing:', file_path)
 
-                filename_without_file_extenstion = filename.split(".")[0]
+                filename_without_file_extenstion = os.path.splitext(filename)[0]
                 metadata = {
                     "source": filename_without_file_extenstion,
                     "file_path": file_path

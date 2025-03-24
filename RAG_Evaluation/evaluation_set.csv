@@ -1,0 +1,24 @@
+question,relevant_chunks,file_path
+ما هي الزراعة العضوية؟,['الأسئلة والأجوبة_chunk_0'],data/knowledge_base/الاسئلة والأجوبة.txt
+ما هي مبادئ الزراعة العضوية؟,"['الأسئلة والأجوبة_chunk_1', 'الأسئلة والأجوبة_chunk_2', 'الأسئلة والأجوبة_chunk_3']",data/knowledge_base/الاسئلة والأجوبة.txt
+ما هي فوائد الزراعة العضوية؟,"['الأسئلة والأجوبة_chunk_4', 'الأسئلة والأجوبة_chunk_5', 'الأسئلة والأجوبة_chunk_6']",data/knowledge_base/الاسئلة والأجوبة.txt
+كيف أتعرف على المنتجات العضوية؟,['الأسئلة والأجوبة_chunk_8'],data/knowledge_base/الاسئلة والأجوبة.txt
+هل يوجد دعم حكومي للإنتاج العضوي في المملكة؟,['الأسئلة والأجوبة_chunk_13'],data/knowledge_base/الاسئلة والأجوبة.txt
+ما هو مركز وقاء وما أهدافه؟,['مركز_وقاء_chunk_0'],data/knowledge_base/مركز_وقاء.txt
+ما هو نظام رادار وقاء وما أهميته؟,['مركز_وقاء_chunk_1'],data/knowledge_base/مركز_وقاء.txt
+ما هي الخدمات التي توفرها منصة خدمات مستفيدين الأعمال؟,['مركز_وقاء_chunk_6'],data/knowledge_base/مركز_وقاء.txt
+ما هو نظام إدارة الاستراتيجية وقياس الأداء؟,['مركز_وقاء_chunk_3'],data/knowledge_base/مركز_وقاء.txt
+ما هو برنامج “رفاه” وما أهدافه؟,['مركز_وقاء_chunk_7'],data/knowledge_base/مركز_وقاء.txt
+What is Future Platform and when was it founded?,"['future_plateform_chunk_0', 'future_plateform_chunk_1']",data/knowledge_base/future_plateform.txt
+What is the vision of Future Platform?,['future_plateform_chunk_2'],data/knowledge_base/future_plateform.txt
+What is the mission of Future Platform?,['future_plateform_chunk_2'],data/knowledge_base/future_plateform.txt
+What services does Future Platform provide?,['future_plateform_chunk_3'],data/knowledge_base/future_plateform.txt
+How does Future Platform use immersive event services?,['future_plateform_chunk_2'],data/knowledge_base/future_plateform.txt
+Where is Mohamed Hassan currently working?,['Mohamed Hassan_chunk_2'],data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What companies Mohamed Hassna worked in?,"['Mohamed Hassan_chunk_3', 'Mohamed Hassan_chunk_4', 'Mohamed Hassan_chunk_5']",data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What technical tools and frameworks does Mohamed Hassan use?,['Mohamed Hassan_chunk_12'],data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What machine learning and deep learning techniques does Mohamed know?,"['Mohamed Hassan_chunk_13', 'Mohamed Hassan_chunk_14']",data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What certifications and courses has Mohamed Hassan completed?,['Mohamed Hassan_chunk_6'],data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What was Mohamed Hassan’s graduation project about?,"['Mohamed Hassan_chunk_7', 'Mohamed Hassan_chunk_8']",data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+What other data science projects has Mohamed worked on?,"['Mohamed Hassan_chunk_9', 'Mohamed Hassan_chunk_10', 'Mohamed Hassan_chunk_11']",data/knowledge_base/original_fiels/Mohamed Hassan.pdf
+Has Mohamed Hassan received any awards or achievements?,['Mohamed Hassan_chunk_14'],data/knowledge_base/original_fiels/Mohamed Hassan.pdf
